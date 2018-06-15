@@ -6,6 +6,53 @@
         //O(n^3) time complexity
         //there is O(nlogn) alternative known based on triangulation
 
+        public static int GetOptimalMatrixChainMultipliactionCostRecursive(int[] dimensions)
+        {
+            //everything below 2 matrices is ignored
+            //2 matrices imply 3 dimensions
+            if (dimensions == null || dimensions.Length < 3)
+            {
+                return 0;
+            }
+
+            int[][] multiplicationsCounts = new int[dimensions.Length-2][];
+
+            for(int i =0; i < dimensions.Length - 2; ++i)
+            {
+                multiplicationsCounts[i] = new int[dimensions.Length+1];
+            }
+
+            return GetOptimalMatrixChainMultipliactionCostRecursive(dimensions, 0, dimensions.Length, multiplicationsCounts);
+        }
+
+        private static int GetOptimalMatrixChainMultipliactionCostRecursive(int[] dimensions, int start, int end, int[][] multiplicationsCounts)
+        {
+            if (end - start < 3) return 0;//
+
+            if(multiplicationsCounts[start][end] != 0)
+            {
+                return multiplicationsCounts[start][end];
+            }
+
+            int cost = int.MaxValue;
+
+            for (int i = start+1; i < end - 1; ++i)
+            {
+                int currentCost = GetOptimalMatrixChainMultipliactionCostRecursive(dimensions, start, i + 1, multiplicationsCounts) + dimensions[start] * dimensions[i] * dimensions[end - 1] + GetOptimalMatrixChainMultipliactionCostRecursive(dimensions, i, end, multiplicationsCounts);
+
+                if (cost > currentCost)
+                {
+                    cost = currentCost;
+                }
+            }
+
+            multiplicationsCounts[start][end] = cost;
+
+            return cost;
+        }
+
+
+
         public static int GetOptimalMatrixChainMultipliactionCost(int[] dimensions)
         {
             //everything below 2 matrices is ignored

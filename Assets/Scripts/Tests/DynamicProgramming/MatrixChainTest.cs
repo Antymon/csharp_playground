@@ -18,6 +18,8 @@ namespace DynamicProgramming
         public void GivenNullImput_CostIs0()
         {
             Assert.AreEqual(0, MatrixChain.GetOptimalMatrixChainMultipliactionCost(null));
+            Assert.AreEqual(0, MatrixChain.GetOptimalMatrixChainMultipliactionCostRecursive(null));
+
         }
 
         [Test]
@@ -30,18 +32,22 @@ namespace DynamicProgramming
         public void GivenSingleDimension_CostIs0()
         {
             Assert.AreEqual(0, MatrixChain.GetOptimalMatrixChainMultipliactionCost(new int[] { 10 }));
+            Assert.AreEqual(0, MatrixChain.GetOptimalMatrixChainMultipliactionCostRecursive(new int[] { 10 }));
+
         }
 
         [Test]
         public void GivenSingleMatrix_CostIs0()
         {
             Assert.AreEqual(0, MatrixChain.GetOptimalMatrixChainMultipliactionCost(new int[] { 10, 20 }));
+            Assert.AreEqual(0, MatrixChain.GetOptimalMatrixChainMultipliactionCostRecursive(new int[] { 10, 20 }));
         }
 
         [Test]
         public void Given2Matrices_CostIsNot0()
         {
             Assert.AreEqual(6000, MatrixChain.GetOptimalMatrixChainMultipliactionCost(new int[] { 10, 20, 30 }));
+            Assert.AreEqual(6000, MatrixChain.GetOptimalMatrixChainMultipliactionCostRecursive(new int[] { 10, 20, 30 }));
 
             /*
                 There are only two matrices of dimensions 10x20 and 20x30. So there 
@@ -54,6 +60,7 @@ namespace DynamicProgramming
         public void GivenMatricesOfSize3_OptimalChainIsSelected()
         {
             Assert.AreEqual(26000, MatrixChain.GetOptimalMatrixChainMultipliactionCost(new int[] { 40, 20, 30, 10, 30 }));
+            Assert.AreEqual(26000, MatrixChain.GetOptimalMatrixChainMultipliactionCostRecursive(new int[] { 40, 20, 30, 10, 30 }));
 
             /*
                 There are 4 matrices of dimensions 40x20, 20x30, 30x10 and 10x30.
@@ -64,6 +71,8 @@ namespace DynamicProgramming
             */
 
             Assert.AreEqual(30000, MatrixChain.GetOptimalMatrixChainMultipliactionCost(new int[] { 10, 20, 30, 40, 30 }));
+            Assert.AreEqual(30000, MatrixChain.GetOptimalMatrixChainMultipliactionCostRecursive(new int[] { 10, 20, 30, 40, 30 }));
+
 
             /*
                 There are 4 matrices of dimensions 10x20, 20x30, 30x40 and 40x30.
