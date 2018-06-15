@@ -20,6 +20,7 @@ namespace DynamicProgramming
         public void t()
         {
             Assert.AreEqual(new List<int> { 2, 4, 6 }, LongestCommonSubsequence.GetLongestSubsequence(new List<int> { 1, 2, 3, 4, 5, 6 }, new List<int> { 2, 4, 6, 8, 10 }));
+            Assert.AreEqual(new List<int> { 2, 4, 6 }, LongestCommonSubsequence.GetLongestSubsequenceRecursively(new List<int> { 1, 2, 3, 4, 5, 6 }, new List<int> { 2, 4, 6, 8, 10 }));
         }
 
     }

@@ -5,6 +5,56 @@ namespace DynamicProgramming
 {
     public static class LongestCommonSubsequence
     {
+
+        //time O(mn) space O(mn)
+        public static List<int> GetLongestSubsequenceRecursively(List<int> seq1, List<int> seq2) {
+
+            int[][] sequenceLengths = new int[seq1.Count + 1][];
+
+            for (int i = 0; i <= seq1.Count; ++i)
+            {
+                sequenceLengths[i] = new int[seq2.Count + 1];
+
+                for (int j = 0; j <= seq2.Count; ++j)
+                {
+                    sequenceLengths[i][j] = -1;
+                }
+            }
+
+            GetLongestSubsequenceRecursively(seq1,seq2,seq1.Count,seq2.Count, sequenceLengths);
+
+            return GetResult(sequenceLengths, seq1, seq2);
+
+        }
+        private static int GetLongestSubsequenceRecursively(List<int> seq1, List<int> seq2, int length1, int length2, int[][] sequenceLengths)
+        {
+            if(length1 == 0 || length2 == 0)
+            {
+                return 0;
+            }
+
+            if (sequenceLengths[length1][length2] > -1)
+            {
+                return sequenceLengths[length1][length2];
+            }
+
+            if(seq1[length1-1] == seq2[length2-1])
+            {
+                sequenceLengths[length1][length2] = GetLongestSubsequenceRecursively(seq1, seq2, length1 - 1, length2 - 1, sequenceLengths) + 1;
+            }
+            else
+            {
+                var result1 = GetLongestSubsequenceRecursively(seq1, seq2, length1 - 1, length2, sequenceLengths);
+                var result2 = GetLongestSubsequenceRecursively(seq1, seq2, length1, length2 - 1, sequenceLengths);
+
+                sequenceLengths[length1][length2] = result1 > result2 ? result1 : result2;
+            }
+
+            return sequenceLengths[length1][length2];
+
+        }
+
+
         //time O(mn) space O(mn)
         public static List<int> GetLongestSubsequence(List<int> seq1, List<int> seq2)
         {
