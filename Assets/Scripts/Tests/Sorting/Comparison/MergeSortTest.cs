@@ -4,27 +4,12 @@ namespace Sorting
 {
     namespace Comparison
     {
-        public class MergeSortTest
+        public class MergeSortTest : SortTest
         {
-
             [SetUp]
-            public void SetUp()
+            public override void SetUp()
             {
-            }
-
-            [TearDown]
-            public void TearDown()
-            {
-            }
-
-            [Test]
-            public void t()
-            {
-                var input = new[] { 1, 0, -1, 0, 1, -1 };
-
-                MergeSort.Sort(input);
-
-                Assert.AreEqual(new[] { -1, -1, 0, 0, 1, 1 }, input);
+                this.sortingAlgorithm = new MergeSort();
             }
 
         }

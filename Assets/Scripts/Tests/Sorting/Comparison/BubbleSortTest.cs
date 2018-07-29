@@ -4,31 +4,13 @@ namespace Sorting
 {
     namespace Comparison
     {
-        public class BubbleSortTest
+        public class BubbleSortTest : SortTest
         {
-
             [SetUp]
-            public void SetUp()
+            public override void SetUp()
             {
+                this.sortingAlgorithm = new BubbleSort();
             }
-
-            [TearDown]
-            public void TearDown()
-            {
-            }
-
-            [Test]
-            public void t()
-            {
-                var input = new[] { 1, 0, -1, 0, 1, -1 };
-
-                BubbleSort.Sort(input);
-
-                Assert.AreEqual(new[] { -1, -1, 0, 0, 1, 1 }, input);
-            }
-
-            //Todo overflow checks
-
         }
     }
 }

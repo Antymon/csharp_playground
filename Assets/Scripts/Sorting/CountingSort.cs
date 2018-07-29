@@ -1,8 +1,8 @@
 ﻿namespace Sorting
 {
-    public static class CountingSort
+    public class CountingSort : ISortable
     {
-        public static void Sort(int[] input)
+        public void Sort(int[] input)
         {
             if(input == null)
             {

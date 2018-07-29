@@ -3,30 +3,14 @@ using NUnit.Framework;
 namespace Sorting
 {
 
-	public class CountingSortTest
+	public class CountingSortTest : SortTest
 	{
-
-		[SetUp]
-		public void SetUp()
-		{
-		}
-
-		[TearDown]
-		public void TearDown()
-		{
-		}
-
-        [Test]
-        public void t()
-        {
-            var input = new[] { 1, 0, - 1, 0, 1, -1 };
-
-            CountingSort.Sort(input);
-
-            Assert.AreEqual(new[] { -1, -1, 0, 0, 1, 1 }, input);
-		}
-
         //Todo overflow checks
 
-	}
+        [SetUp]
+        public override void SetUp()
+        {
+            this.sortingAlgorithm = new CountingSort();
+        }
+    }
 }

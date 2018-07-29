@@ -2,14 +2,14 @@
 {
     namespace Comparison
     {
-        public static class MergeSort
+        public class MergeSort : ISortable
         {
-            public static void Sort(int[] input)
+            public void Sort(int[] input)
             {
                 Sort(input, 0, input.Length);
             }
 
-            private static void Sort(int[] input, int first, int last)
+            private void Sort(int[] input, int first, int last)
             {
                 if (last - first< 2)
                 {
@@ -23,7 +23,7 @@
                 Merge(input, first, mid, last);
             }
 
-            private static void Merge(int[] input, int first, int mid, int last)
+            private void Merge(int[] input, int first, int mid, int last)
             {
                 int[] inputPart1 = new int[mid - first];
                 int[] inputPart2 = new int[last - mid];

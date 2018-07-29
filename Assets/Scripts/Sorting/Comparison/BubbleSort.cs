@@ -2,9 +2,9 @@
 {
     namespace Comparison
     {
-        public static class BubbleSort
+        public class BubbleSort : ISortable
         {
-            public static void Sort(int[] input)
+            public void Sort(int[] input)
             {
                 int lastSwapIndex;
                 int range = input.Length;
