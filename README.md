@@ -28,4 +28,4 @@ So far in the little zoo:
 
 * Efficient solutions these days usually have complex answers.
   For example Matrix Chain Multiplication here is a DP problem with O(n^3) complexity.
-  There existis triangulation-based Shing-Hu algorithm of O(nlgn) complexity
+  There existis triangulation-based Shing-Hu algorithm of O(nlgn) complexity though which is a way better.
